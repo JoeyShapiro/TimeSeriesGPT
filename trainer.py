@@ -34,6 +34,8 @@ class LLcheMTrainer(Trainer):
         """
         if self.train_dataset is None:
             raise ValueError("Trainer: training requires a train_dataset.")
+        
+        # TODO do epochs matter
 
         train_dataset = self.train_dataset
         data_collator = self.data_collator
@@ -65,7 +67,6 @@ class LLcheMTrainer(Trainer):
                 shuffle=self.shuffle_dataloader,
             )
 
-        # NOTE change from original code
         train_sampler = self.sampler if self.sampler else self._get_train_sampler()
 
         return DataLoader(
